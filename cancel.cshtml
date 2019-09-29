@@ -1,0 +1,82 @@
+﻿@model GateBoys.Models.TrackOrder
+
+@{
+    ViewBag.Title = "cancel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>cancel</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>TrackOrder</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.TrackId)
+    @Html.HiddenFor(model => model.OrderNumber)
+    @Html.HiddenFor(model => model.OrderPlaced)
+    @Html.HiddenFor(model => model.OrderPlacedDate)
+    @Html.HiddenFor(model => model.PreparingParcel)
+    @Html.HiddenFor(model => model.PrepParcelDate)
+    @Html.HiddenFor(model => model.InWarehouse)
+    @Html.HiddenFor(model => model.InWarehsDate)
+    @Html.HiddenFor(model => model.IsReady)
+    @Html.HiddenFor(model => model.IsReadyDate)
+    @Html.HiddenFor(model => model.InTransit)
+    @Html.HiddenFor(model => model.InTransitDate)
+    @Html.HiddenFor(model => model.IsDeliver)
+    @Html.HiddenFor(model => model.IsDeliverDate)
+    @Html.HiddenFor(model => model.driverId)
+    @Html.HiddenFor(model => model.driverNames)
+    @Html.HiddenFor(model => model.colIdNum)
+    @Html.HiddenFor(model => model.pin)
+    @Html.HiddenFor(model => model.UserMail)
+    @Html.HiddenFor(model => model.delColect)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.OrderNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.OrderNumber, new { htmlAttributes = new { @class = "form-control", @disabled = true } })
+            @Html.ValidationMessageFor(model => model.OrderNumber, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.cancelReason, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.cancelReason, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.cancelReason, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.idCompareNum, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.idCompareNum, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.idCompareNum, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.comparePin, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.comparePin, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.comparePin, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
